@@ -1,0 +1,45 @@
+body {
+  background-color: rgb(240, 240, 240);
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form {
+  margin-top: 10rem;
+  width: 28rem;
+  height: 44rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 3rem 2rem 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 8px;
+}
+
+.form-title {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-btn {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-login {
+  margin-left: 1rem;
+  text-decoration: none;
+}
