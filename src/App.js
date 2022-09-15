@@ -1,16 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Pages/Components
-import Landing from './components/pages/Landing.js'
-import Screener from './components/pages/Screener.js'
-import StockSingle from './components/pages/StockSingle.js'
-import NotFound from './components/pages/NotFound.js'
-import SiteNavBar from './components/comps/SiteNavBar.js'
-// import Footer from './components/comps/Footer.js'
-import Portfolio from './components/user/Portfolio.js'
-import Leaderboard from './components/pages/Leaderboard.js'
-import Register from './components/user/Register.js'
-import Login from './components/user/Login.js'
+import Landing from './components/Landing.js'
+import ThreadIndex from './components/threads/ThreadIndex.js'
+import ThreadDisplay from './components/threads/ThreadDisplay.js'
+import ThreadAdd from './components/threads/ThreadAdd.js'
+import ThreadUpdate from './components/threads/ThreadUpdate.js'
+import NotFound from './components/NotFound.js'
+import SiteNavBar from './components/SiteNavBar.js'
+import Register from './auth/Register.js'
+import Login from './auth/Login.js'
 
 const App = () => {
   return (
@@ -19,10 +18,10 @@ const App = () => {
         <SiteNavBar />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/screener" element={<Screener />} />
-          <Route path="/stocks/:stockId" element={<StockSingle />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/threads" element={<ThreadIndex />} />
+          <Route path="/threads/:id" element={<ThreadDisplay />} />
+          <Route path="/threads/add" element={<ThreadAdd />} />
+          <Route path="/threads/:id/update" element={<ThreadUpdate />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
