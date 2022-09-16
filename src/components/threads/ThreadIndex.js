@@ -5,7 +5,7 @@ import ThreadFilter from './ThreadFilter'
 
 // Import icons
 import { BsFilterRight } from 'react-icons/bs'
-import { Container, Table } from 'react-bootstrap'
+import { Button, Container, Table } from 'react-bootstrap'
 
 const ThreadIndex = () => {
   const [threads, setThreads] = useState([])
@@ -17,7 +17,7 @@ const ThreadIndex = () => {
     stockRating: '',
   })
 
-  // GET all the recipes
+  // GET all the threads
   useEffect(() => {
     const getData = async () => {
       try {
@@ -70,18 +70,21 @@ const ThreadIndex = () => {
   }
 
   return (
-    <div className="page-wrapper">
+    <div className="index-wrapper">
       <div className="page-cont">
+        <div className="index-title">
+          <h3>Forum Threads</h3>
+        </div>
         <div className="index-search">
           <input
             name="search"
             type="text"
-            placeholder="Search by name"
+            placeholder="Search any thread"
             onChange={handleChange}
           ></input>
-          <button onClick={handleFiltersToggleBtn}>
+          <Button onClick={handleFiltersToggleBtn}>
             <BsFilterRight className="filters-button" />
-          </button>
+          </Button>
         </div>
         {filtersSwitchBtn && (
           <ThreadFilter
@@ -121,7 +124,7 @@ const ThreadIndex = () => {
                     <td className="col-1 text-end">
                       <a href={`/threads/${id}`}>{stock_rating}</a>
                     </td>
-                    <td className="col-1 text-start">
+                    <td className="col-1 text-center">
                       <a href={`/threads/${id}`}>{owner}</a>
                     </td>
                   </tr>

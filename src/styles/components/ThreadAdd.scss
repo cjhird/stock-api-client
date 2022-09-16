@@ -2,7 +2,7 @@ body {
   background-color: rgb(240, 240, 240);
 }
 
-.page-wrapper {
+.threadadd-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -11,6 +11,7 @@ body {
 }
 
 .threadadd-form {
+  margin-top: 5rem;
   width: 45rem;
   height: 50rem;
   align-items: center;
@@ -20,9 +21,9 @@ body {
   border-radius: 8px;
 }
 
-.form-title {
+.threadadd-title {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 

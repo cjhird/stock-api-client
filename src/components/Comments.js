@@ -34,7 +34,7 @@ const Comments = ({ getData }) => {
 
   return (
     <>
-      <h3>Comments</h3>
+      <h4>Thread Comments</h4>
       {userIsAuthenticated() ? (
         <form onSubmit={handleSubmitComment}>
           <textarea

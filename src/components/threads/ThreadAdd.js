@@ -46,11 +46,11 @@ const ThreadAdd = () => {
   }
 
   return (
-    <div className="page-wrapper">
+    <div className="threadadd-wrapper">
       <div className="threadadd-form">
         <Form onSubmit={handleSubmitBtn}>
-          <h3>Add Thread</h3>
-          <Form.Group>
+          <h3 className="threadadd-title">Add Thread</h3>
+          <Form.Group className="mb-3">
             <Form.Label>Stock Name</Form.Label>
             <Form.Control
               type="text"
@@ -60,7 +60,7 @@ const ThreadAdd = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Ticker</Form.Label>
             <Form.Control
               type="text"
@@ -69,7 +69,7 @@ const ThreadAdd = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Stock Sector</Form.Label>
             <Form.Select
               type="text"
@@ -88,7 +88,7 @@ const ThreadAdd = () => {
               <option value="Consumer">Consumer</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Investment Thesis</Form.Label>
             <Form.Control
               type="text"
@@ -98,7 +98,7 @@ const ThreadAdd = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Stock Rating</Form.Label>
             <Form.Select
               type="text"

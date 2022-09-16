@@ -60,11 +60,11 @@ const ThreadUpdate = () => {
   }
 
   return (
-    <div className="page-wrapper">
-      <div className="threadadd-form">
+    <div className="threadupdate-wrapper">
+      <div className="threadupdate-form">
         <Form onSubmit={handleSubmitBtn}>
-          <h3>Update Thread</h3>
-          <Form.Group>
+          <h3 className="threadupdate-title">Update Thread</h3>
+          <Form.Group className="mb-3">
             <Form.Label>Stock Name</Form.Label>
             <Form.Control
               type="text"
@@ -74,7 +74,7 @@ const ThreadUpdate = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Ticker</Form.Label>
             <Form.Control
               type="text"
@@ -83,7 +83,7 @@ const ThreadUpdate = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Stock Sector</Form.Label>
             <Form.Select
               type="text"
@@ -102,7 +102,7 @@ const ThreadUpdate = () => {
               <option value="Consumer">Consumer</option>
             </Form.Select>
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Investment Thesis</Form.Label>
             <Form.Control
               type="text"
@@ -111,7 +111,7 @@ const ThreadUpdate = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Stock Rating</Form.Label>
             <Form.Select
               type="text"

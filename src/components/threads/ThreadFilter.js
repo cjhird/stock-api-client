@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from 'react-bootstrap'
 
 const ThreadFilter = ({ threads, handleChange, handleClearFiltersBtn }) => {
   const [stockRatingList, setStockRatingList] = useState([])
@@ -26,42 +27,44 @@ const ThreadFilter = ({ threads, handleChange, handleClearFiltersBtn }) => {
 
   return (
     <section className="filters-wrapper">
-      <div className="time-cook-section">
-        <h4>Stock Sectors</h4>
-        {stockSectorList.map((item, index) => {
-          return (
-            <button
-              name="stockSector"
-              className={`${item}-btn`}
-              key={index}
-              value={item}
-              onClick={handleChange}
-            >
-              {item}
-            </button>
-          )
-        })}
+      <div className="filters-cont">
+        <div className="stock-sector-cont">
+          <h4>Stock Sectors</h4>
+          {stockSectorList.map((item, index) => {
+            return (
+              <Button
+                name="stockSector"
+                className={`${item}-btn`}
+                key={index}
+                value={item}
+                onClick={handleChange}
+              >
+                {item}
+              </Button>
+            )
+          })}
+        </div>
+        <hr />
+        <div className="stock-rating-cont">
+          <h4>Stock Rating</h4>
+          {stockRatingList.map((item, index) => {
+            return (
+              <Button
+                name="stockRating"
+                className={`stock-rating ${item}-btn`}
+                key={index}
+                value={item}
+                onClick={handleChange}
+              >
+                {item}
+              </Button>
+            )
+          })}
+        </div>
+        <Button className="clear-filters" onClick={handleClearFiltersBtn}>
+          Clear filters
+        </Button>
       </div>
-      <hr />
-      <div className="main-ingredient-section">
-        <h4>Stock Rating</h4>
-        {stockRatingList.map((item, index) => {
-          return (
-            <button
-              name="stockRating"
-              className={`stock-rating ${item}-btn`}
-              key={index}
-              value={item}
-              onClick={handleChange}
-            >
-              {item}
-            </button>
-          )
-        })}
-      </div>
-      <button className="clear-filters" onClick={handleClearFiltersBtn}>
-        Clear filters
-      </button>
     </section>
   )
 }

@@ -41,7 +41,7 @@ const Login = () => {
   }
 
   return (
-    <div className="page-wrapper">
+    <div className="login-wrapper">
       <div className="login-form">
         <Form onSubmit={handleSubmitBtn}>
           <h3 className="form-title">Login</h3>

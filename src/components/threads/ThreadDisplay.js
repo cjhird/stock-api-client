@@ -5,10 +5,8 @@ import { getTokenFromLocalStorage, userIsOwner } from '../../helpers/auth'
 import { Link } from 'react-router-dom'
 import Comments from '../Comments'
 
-// Import icons
-import { FaUserAlt } from 'react-icons/fa'
 import { RiDeleteBin6Fill } from 'react-icons/ri'
-import { MdOutlineModeEditOutline } from 'react-icons/md'
+import { Button } from 'react-bootstrap'
 
 const ThreadDisplay = () => {
   const navigate = useNavigate()
@@ -17,7 +15,7 @@ const ThreadDisplay = () => {
   const { id } = useParams()
   const [boxDisplay, setBoxDisplay] = useState('ingredients')
 
-  // Get a single recipe
+  // Get a single thread
   const getData = async () => {
     const { data } = await axios.get(`http://localhost:8000/api/forum/${id}/`)
     console.log(data)
@@ -29,7 +27,7 @@ const ThreadDisplay = () => {
     getData()
   }, [])
 
-  // DELETE the recipe
+  // DELETE the thread
   const handleRemoveBtn = async () => {
     try {
       await axios.delete(`http://localhost:8000/api/forum/${id}/`, {
@@ -67,45 +65,46 @@ const ThreadDisplay = () => {
   }
 
   return (
-    <>
+    <div className="display-wrapper">
       {thread.owner ? (
-        <>
-          <header>
+        <div className="display-cont">
+          <div className="display-title">
             <h1>
               {thread.name} - {thread.ticker}
             </h1>
             <div>
               {thread.owner.username && (
-                <h3>
-                  <FaUserAlt className="header-user-icon" />{' '}
-                  {thread.owner.username}
-                </h3>
+                <h3>Created by: {thread.owner.username}</h3>
               )}
               {userIsOwner(thread.owner) && (
-                <div>
-                  <Link to={`/threads/${id}/update`}>
-                    <MdOutlineModeEditOutline />
-                  </Link>
-                  <button onClick={handleRemoveBtn}>
+                <div className="display-editdelete">
+                  <Button variant="warning">
+                    <a href={`/threads/${id}/update`}>Update</a>
+                  </Button>
+
+                  <Button variant="danger" onClick={handleRemoveBtn}>
                     <RiDeleteBin6Fill />
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>
-          </header>
-          <section className="recipe-show">
-            <div className="image-wrapper">
-              <div>
-                <img src={thread.image} />
-              </div>
+          </div>
+          <div className="display-show">
+            <div className="display-content">
+              <h4>Stock Sector:</h4>
+              <p>{thread.stock_sector}</p>
             </div>
-            <div>
-              <h2>{thread.stock_sector}</h2>
-              <h2>{thread.text}</h2>
-              <h2>{thread.stock_rating}</h2>
+            <div className="display-content">
+              <h4>Investment Thesis:</h4>
+              <p>{thread.text}</p>
             </div>
-          </section>
-          <section className="comments-section">
+            <div className="display-content">
+              <h4>Rating:</h4>
+              <p>{thread.stock_rating}</p>
+            </div>
+            <div className="display-content"></div>
+          </div>
+          <div className="display-comments">
             <Comments getData={getData} />
             <div className="comment-list">
               {thread.comments && thread.comments.length > 0 ? (
@@ -113,16 +112,13 @@ const ThreadDisplay = () => {
                   return (
                     <>
                       <div key={item.id} className="single-comment">
-                        <h5>
-                          <FaUserAlt className="comments-user-icon" />{' '}
-                          {item.owner.username}
-                        </h5>
+                        <h5>{item.owner.username}</h5>
                         <p>{item.created_at.slice(0, 10)}</p>
                         <p>{item.text}</p>
                         {userIsOwner(item.owner.id) && (
-                          <button value={item.id} onClick={handleDeleteComment}>
+                          <Button value={item.id} onClick={handleDeleteComment}>
                             Delete
-                          </button>
+                          </Button>
                         )}
                         <hr />
                       </div>
@@ -133,12 +129,12 @@ const ThreadDisplay = () => {
                 <h6>No comments yet!</h6>
               )}
             </div>
-          </section>
-        </>
+          </div>
+        </div>
       ) : (
         <h4>Not found!</h4>
       )}
-    </>
+    </div>
   )
 }
 
