@@ -93,6 +93,7 @@ const ThreadAdd = () => {
             <Form.Control
               type="text"
               name="text"
+              className="textbox"
               value={formData.text}
               onChange={handleChange}
             />

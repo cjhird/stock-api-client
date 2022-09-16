@@ -5,7 +5,7 @@ import ThreadFilter from './ThreadFilter'
 
 // Import icons
 import { BsFilterRight } from 'react-icons/bs'
-import { Table } from 'react-bootstrap'
+import { Container, Table } from 'react-bootstrap'
 
 const ThreadIndex = () => {
   const [threads, setThreads] = useState([])
@@ -70,54 +70,67 @@ const ThreadIndex = () => {
   }
 
   return (
-    <div className="recipes-index-page">
-      <div className="search-bar-and-filters-btn">
-        <input
-          name="search"
-          type="text"
-          placeholder="Search by name"
-          onChange={handleChange}
-        ></input>
-        <button onClick={handleFiltersToggleBtn}>
-          <BsFilterRight className="filters-button" />
-        </button>
-      </div>
-      {filtersSwitchBtn && (
-        <ThreadFilter
-          threads={threads}
-          handleChange={handleChange}
-          handleClearFiltersBtn={handleClearFiltersBtn}
-        />
-      )}
-      <Table id="coin-title" hover variant="light" className="col-3 mb-0">
-        <thead>
-          <tr>
-            <th className="col-1">Ticker</th>
-            <th className="col-3 text-start">Stock</th>
-            <th className="col-3 text-end">Sector</th>
-            <th className="col-1 text-end">Rating</th>
-            <th className="col-3 text-start">Owner</th>
-          </tr>
-        </thead>
-      </Table>
-      <Table hover variant="light" className="col-3 mb-0">
-        <tbody>
-          {threadsFiltered.map((item) => {
-            const { name, ticker, id, stock_sector, stock_rating, owner } = item
-            return (
-              <tr key={id} className="mb-5 mt-5">
-                {/* <Link to={`/threads/${id}`}> */}
-                <td className="col-1">{ticker}</td>
-                <td className="col-3 text-start">{name}</td>
-                <td className="col-3 text-end">{stock_sector}</td>
-                <td className="col-1 text-end">{stock_rating}</td>
-                <td className="col-1 text-start">{owner}</td>
-                {/* </Link> */}
+    <div className="page-wrapper">
+      <div className="page-cont">
+        <div className="index-search">
+          <input
+            name="search"
+            type="text"
+            placeholder="Search by name"
+            onChange={handleChange}
+          ></input>
+          <button onClick={handleFiltersToggleBtn}>
+            <BsFilterRight className="filters-button" />
+          </button>
+        </div>
+        {filtersSwitchBtn && (
+          <ThreadFilter
+            threads={threads}
+            handleChange={handleChange}
+            handleClearFiltersBtn={handleClearFiltersBtn}
+          />
+        )}
+        <Container>
+          <Table id="coin-title" hover variant="light" className="col-3 mb-0">
+            <thead>
+              <tr>
+                <th className="col-1">Ticker</th>
+                <th className="col-3 text-start">Stock</th>
+                <th className="col-2 text-start">Sector</th>
+                <th className="col-1 text-end">Rating</th>
+                <th className="col-1 text-start">Owner Id</th>
               </tr>
-            )
-          })}
-        </tbody>
-      </Table>
+            </thead>
+          </Table>
+          <Table hover variant="light" className="col-3 mb-0">
+            <tbody>
+              {threadsFiltered.map((item) => {
+                const { name, ticker, id, stock_sector, stock_rating, owner } =
+                  item
+                return (
+                  <tr key={id} className="mb-5 mt-5">
+                    <td className="col-1">
+                      <a href={`/threads/${id}`}>{ticker}</a>
+                    </td>
+                    <td className="col-3 text-start">
+                      <a href={`/threads/${id}`}>{name}</a>
+                    </td>
+                    <td className="col-2 text-start">
+                      <a href={`/threads/${id}`}>{stock_sector}</a>
+                    </td>
+                    <td className="col-1 text-end">
+                      <a href={`/threads/${id}`}>{stock_rating}</a>
+                    </td>
+                    <td className="col-1 text-start">
+                      <a href={`/threads/${id}`}>{owner}</a>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </Table>
+        </Container>
+      </div>
     </div>
   )
 }

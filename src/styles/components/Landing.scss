@@ -5,14 +5,14 @@ body {
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
+  margin-top: 15rem;
   height: 100vh;
 }
 
-.threadadd-form {
-  width: 45rem;
-  height: 50rem;
+.landing-cont {
+  width: 55rem;
+  height: 20rem;
   align-items: center;
   padding: 2rem 2rem 2rem 2rem;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -20,30 +20,18 @@ body {
   border-radius: 8px;
 }
 
-.form-title {
-  text-align: center;
+.landing-cont h4 {
   margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
-.form-btn {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-.form-text {
+.landing-btn {
+  margin-top: 2rem;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
 }
 
-#form-login {
-  margin-left: 1rem;
-  text-decoration: none;
-}
-
-.textbox {
-  height: 5rem;
-  width: 100%;
+.landing-btn Button {
+  width: 10rem;
+  height: 3rem;
 }
