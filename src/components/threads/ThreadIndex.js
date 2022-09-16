@@ -5,6 +5,7 @@ import ThreadFilter from './ThreadFilter'
 
 // Import icons
 import { BsFilterRight } from 'react-icons/bs'
+import { Table } from 'react-bootstrap'
 
 const ThreadIndex = () => {
   const [threads, setThreads] = useState([])
@@ -88,25 +89,35 @@ const ThreadIndex = () => {
           handleClearFiltersBtn={handleClearFiltersBtn}
         />
       )}
-      <div className="index-recipes-list">
-        {threadsFiltered.map((item) => {
-          const { name, ticker, id, stock_rating, image } = item
-          return (
-            <div key={id} className="index-recipe-card">
-              <Link to={`/threads/${id}`}>
-                <div className="index-card-image">
-                  <img src={image} />
-                </div>
-                <div className="index-card-body">
-                  <h4>{name}</h4>
-                  <h4>{ticker}</h4>
-                  <h4>{stock_rating}</h4>
-                </div>
-              </Link>
-            </div>
-          )
-        })}
-      </div>
+      <Table id="coin-title" hover variant="light" className="col-3 mb-0">
+        <thead>
+          <tr>
+            <th className="col-1">Ticker</th>
+            <th className="col-3 text-start">Stock</th>
+            <th className="col-3 text-end">Sector</th>
+            <th className="col-1 text-end">Rating</th>
+            <th className="col-3 text-start">Owner</th>
+          </tr>
+        </thead>
+      </Table>
+      <Table hover variant="light" className="col-3 mb-0">
+        <tbody>
+          {threadsFiltered.map((item) => {
+            const { name, ticker, id, stock_sector, stock_rating, owner } = item
+            return (
+              <tr key={id} className="mb-5 mt-5">
+                {/* <Link to={`/threads/${id}`}> */}
+                <td className="col-1">{ticker}</td>
+                <td className="col-3 text-start">{name}</td>
+                <td className="col-3 text-end">{stock_sector}</td>
+                <td className="col-1 text-end">{stock_rating}</td>
+                <td className="col-1 text-start">{owner}</td>
+                {/* </Link> */}
+              </tr>
+            )
+          })}
+        </tbody>
+      </Table>
     </div>
   )
 }

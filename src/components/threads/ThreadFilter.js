@@ -27,7 +27,7 @@ const ThreadFilter = ({ threads, handleChange, handleClearFiltersBtn }) => {
   return (
     <section className="filters-wrapper">
       <div className="time-cook-section">
-        {/* <IoIosTimer className='filters-timer-icon'/> */}
+        <h4>Stock Sectors</h4>
         {stockSectorList.map((item, index) => {
           return (
             <button
@@ -44,9 +44,8 @@ const ThreadFilter = ({ threads, handleChange, handleClearFiltersBtn }) => {
       </div>
       <hr />
       <div className="main-ingredient-section">
-        {/* <h4>Main ingredient</h4> */}
+        <h4>Stock Rating</h4>
         {stockRatingList.map((item, index) => {
-          console.log(item)
           return (
             <button
               name="stockRating"
@@ -54,7 +53,9 @@ const ThreadFilter = ({ threads, handleChange, handleClearFiltersBtn }) => {
               key={index}
               value={item}
               onClick={handleChange}
-            ></button>
+            >
+              {item}
+            </button>
           )
         })}
       </div>
