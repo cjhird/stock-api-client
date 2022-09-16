@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
-import ImageUpload from '../ImageUpload'
 import { getPayload, getTokenFromLocalStorage } from '../../helpers/auth'
 
 const ThreadUpdate = () => {
@@ -114,13 +113,6 @@ const ThreadUpdate = () => {
           <option value="Outperform">Outperform</option>
           <option value="Buy">Buy</option>
         </select>
-
-        <label htmlFor="image">Image</label>
-        <ImageUpload
-          formData={formData}
-          setFormData={setFormData}
-          value={formData.image}
-        />
 
         <button className="edit-recipe-btn" type="submit">
           Update Thread

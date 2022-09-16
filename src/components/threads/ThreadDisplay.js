@@ -32,7 +32,7 @@ const ThreadDisplay = () => {
   // DELETE the recipe
   const handleRemoveBtn = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/threads/${id}/`, {
+      await axios.delete(`http://localhost:8000/api/forum/${id}/`, {
         headers: {
           Authorization: `Bearer ${getTokenFromLocalStorage()}`,
         },
